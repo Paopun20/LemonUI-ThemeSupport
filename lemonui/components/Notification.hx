@@ -31,17 +31,21 @@ class Notification extends ComponentBase {
         SpriteUtil.roundSpriteCorners(background, 3);
         add(background);
 
-        title = new FlxText(12, 7, 0, TITLE);
+        title = new FlxText(12, 8, 0, TITLE);
         title.font = Constants.FONT_BOLD;
-        title.size = 20;
+        title.size = Math.round(16*1.75);
+        title.scale.x = title.scale.y /= 1.75;
+        title.updateHitbox();
         add(title);
 
         line = new FlxSprite(10, 33).makeGraphic(componentWidth - 20, 2, FlxColor.WHITE);
         add(line);
 
-        body = new FlxText(12, 37, line.width, BODY);
+        body = new FlxText(12, 37, line.width * 1.75, BODY);
         body.font = Constants.FONT_REGULAR;
-        body.size = 15;
+        body.size = Math.round(14*1.75);
+        body.scale.x = body.scale.y /= 1.75;
+        body.updateHitbox();
         add(body);
 
         componentColor = 0xFF3d3f41;
