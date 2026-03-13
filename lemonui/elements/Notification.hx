@@ -1,13 +1,13 @@
-package lemonui.components;
+package lemonui.elements;
 
 import flixel.text.FlxText;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
-import lemonui.core.ComponentBase;
+import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
-class Notification extends ComponentBase {
+class Notification extends ElementBase {
 
     public var outline:FlxSprite;
     public var background:FlxSprite;

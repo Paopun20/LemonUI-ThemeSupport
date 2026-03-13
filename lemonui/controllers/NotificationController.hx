@@ -6,7 +6,7 @@ import flixel.FlxCamera;
 import flixel.util.FlxTimer;
 
 import lemonui.utils.MathUtil;
-import lemonui.components.Notification;
+import lemonui.elements.Notification;
 
 class NotificationController {
     public static var instance(get, default):NotificationController;
