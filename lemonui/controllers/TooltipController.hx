@@ -60,8 +60,8 @@ class TooltipController {
         tooltip.alpha = MathUtil.lerp(tooltip.alpha, tooltip.targetAlpha, 0.2);
         if (tooltip.targetAlpha == 0 && Math.round(tooltip.alpha * 100) / 100 == 0) {
             tooltip.alpha = 0;
-                FlxG.state.remove(tooltip);
-                    active = false;
+            FlxG.state.remove(tooltip);
+            active = false;
         }
     }
 }
