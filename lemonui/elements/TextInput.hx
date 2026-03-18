@@ -61,7 +61,7 @@ class TextInput extends ElementBase {
         {key: GRAVEACCENT, lower: "`", upper: "~"},
     ];
 
-    public function new(x:Float = 0, y:Float = 0, labelText:String, fieldWidth:Int = 150, defaultValue:String = "", maxLength:Int = 0) {
+    public function new(x:Float = 0, y:Float = 0, labelText:String, fieldWidth:Int = 150, defaultValue:String = "", maxLength:Int = 0, wordWrap:Bool = false) {
         super(x, y);
 
         this.fieldWidth = fieldWidth;
@@ -80,7 +80,7 @@ class TextInput extends ElementBase {
         SpriteUtil.roundSpriteCorners(background, 4);
         add(background);
 
-        textDisplay = new FlxText(6, fieldY + 4, fieldWidth - 12, defaultValue);
+        textDisplay = new FlxText(6, fieldY + 4, wordWrap ? fieldWidth - 12 : 0, defaultValue);
         textDisplay.font = Constants.FONT_REGULAR;
         textDisplay.size = Math.round(13 * 1.75);
         textDisplay.scale.x = textDisplay.scale.y /= 1.75;
