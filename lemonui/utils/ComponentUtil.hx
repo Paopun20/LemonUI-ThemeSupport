@@ -49,7 +49,7 @@ class ComponentUtil {
         return component;
     }
 
-    public static function buildFromXML(object:Dynamic) {
-
+    public static function buildFromXML(xmlString:String, ?handlers:Dynamic):lemonui.xml.XMLResult {
+        return lemonui.xml.XMLBuilder.build(xmlString, handlers);
     }
 }
