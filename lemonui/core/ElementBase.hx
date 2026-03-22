@@ -23,13 +23,13 @@ class ElementBase extends FlxSpriteGroup {
         add(component);
     }
 
-    public function findElement(id:String, doTrace:Bool = true):Null<ElementBase> {
+    public function findElement<T>(id:String, doTrace:Bool = true):Null<T> {
         for (i in members) {
             if (Std.isOfType(i, ElementBase)) {
                 var el:ElementBase = cast i;
-                if (el.id == id) return el;
+                if (el.id == id) return cast el;
                 var out = el.findElement(id, false);
-                if (out != null) return out;
+                if (out != null) return cast out;
             }
         }
         if (doTrace) trace('Could not find element with id "$id"');

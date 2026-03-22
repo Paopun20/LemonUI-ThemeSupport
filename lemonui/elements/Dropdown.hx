@@ -112,6 +112,22 @@ class Dropdown extends ElementBase {
         listLabels.push(itemLabel);
     }
 
+    public function clearOptions() {
+        options = [];
+        for (value in listItems) {
+            listItems.remove(value);
+            remove(value);
+        }
+        for (value in listLabels) {
+            listLabels.remove(value);
+            remove(value);
+        }
+        listLabels = [];
+        listItems = [];
+        selectedText.text = '';
+        selectedText.updateHitbox();
+    }
+
     function get_selectedOption():OptionData {
         return { text: options[selectedIndex], id: ids[selectedIndex] };
     }
@@ -169,6 +185,14 @@ class Dropdown extends ElementBase {
 
     override function draw() {
         syncListVisibility();
+        for (i in listItems) {
+            remove(i);
+            add(i);
+        }
+        for (i in listLabels) {
+            remove(i);
+            add(i);
+        }
         this.y -= offsetY;
         super.draw();
         this.y += offsetY;
