@@ -28,6 +28,7 @@ class Dropdown extends ElementBase {
     public dynamic function onChange(index:Int, label:String) {}
 
     var itemHeight:Int = 22;
+    var fieldY:Float;
 
     public function new(x:Float = 0, y:Float = 0, labelText:String, options:Array<String>, dropWidth:Int = 150) {
         super(x, y);
@@ -42,7 +43,7 @@ class Dropdown extends ElementBase {
         label.updateHitbox();
         add(label);
 
-        var fieldY = Math.round(label.height + 4);
+        fieldY = Math.round(label.height + 4);
 
         background = new FlxSprite(0, fieldY).makeGraphic(dropWidth, 24, FlxColor.WHITE);
         SpriteUtil.roundSpriteCorners(background, 4);
@@ -70,26 +71,32 @@ class Dropdown extends ElementBase {
         add(listBG);
 
         // Build option items
-        for (i in 0...options.length) {
-            var itemY = fieldY + 25 + i * itemHeight;
-
-            var itemBG = new FlxSprite(0, itemY).makeGraphic(dropWidth, itemHeight, FlxColor.WHITE);
-            itemBG.visible = false;
-            add(itemBG);
-            listItems.push(itemBG);
-
-            var itemLabel = new FlxText(6, itemY + 3, 0, options[i]);
-            itemLabel.font = Constants.FONT_REGULAR;
-            itemLabel.size = Math.round(13 * 1.75);
-            itemLabel.scale.x = itemLabel.scale.y /= 1.75;
-            itemLabel.updateHitbox();
-            itemLabel.visible = false;
-            add(itemLabel);
-            listLabels.push(itemLabel);
+        for (i in options) {
+            addOption(i);
         }
 
         elementColor = 0xFF3d3f41;
         if (options.length > 0) selectedIndex = 0;
+    }
+
+    function addOption(text:String) {
+        var i = listLabels.length;
+
+        var itemY = fieldY + 25 + i * itemHeight;
+
+        var itemBG = new FlxSprite(0, itemY).makeGraphic(dropWidth, itemHeight, FlxColor.WHITE);
+        itemBG.visible = false;
+        add(itemBG);
+        listItems.push(itemBG);
+
+        var itemLabel = new FlxText(6, itemY + 3, 0, text);
+        itemLabel.font = Constants.FONT_REGULAR;
+        itemLabel.size = Math.round(13 * 1.75);
+        itemLabel.scale.x = itemLabel.scale.y /= 1.75;
+        itemLabel.updateHitbox();
+        itemLabel.visible = false;
+        add(itemLabel);
+        listLabels.push(itemLabel);
     }
 
     function set_selectedIndex(v:Int):Int {
