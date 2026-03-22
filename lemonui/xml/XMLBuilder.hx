@@ -64,9 +64,9 @@ class XMLBuilder {
             cast(parent, VBox).addElement(el);
         } else if (Std.isOfType(parent, HBox)) {
             cast(parent, HBox).addElement(el);
-        } else if (Std.isOfType(parent, Menu)) {
+        } else if (Std.isOfType(parent, Menu) && Std.isOfType(el, MenuItem)) {
             cast(parent, Menu).addElement(el);
-        } else if (Std.isOfType(parent, MenuBar)) {
+        } else if (Std.isOfType(parent, MenuBar) && Std.isOfType(el, Menu)) {
             cast(parent, MenuBar).addElement(el);
         } else {
             parent.add(el);
