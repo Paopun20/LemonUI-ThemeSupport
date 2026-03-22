@@ -9,6 +9,11 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+typedef OptionData = {
+    var text:String;
+    var id:String;
+}
+
 class Dropdown extends ElementBase {
 
     public var background:FlxSprite;
@@ -20,9 +25,12 @@ class Dropdown extends ElementBase {
     public var listItems:Array<FlxSprite> = [];
     public var listLabels:Array<FlxText> = [];
 
+    public var ids:Array<Null<String>> = [];
+
     public var options:Array<String>;
     public var selectedIndex(default, set):Int = 0;
     public var selectedLabel(get, set):String;
+    public var selectedOption(get, never):OptionData;
     public var isOpen:Bool = false;
     public var dropWidth:Int;
 
@@ -82,8 +90,9 @@ class Dropdown extends ElementBase {
         if (options.length > 0) selectedIndex = 0;
     }
 
-    public function addOption(text:String, push:Bool = true) {
+    public function addOption(text:String, push:Bool = true, ?id:String) {
         if (push) options.push(text);
+        ids.push(id);
         var i = listLabels.length;
 
         var itemY = fieldY + 25 + i * itemHeight;
@@ -101,6 +110,10 @@ class Dropdown extends ElementBase {
         itemLabel.visible = false;
         add(itemLabel);
         listLabels.push(itemLabel);
+    }
+
+    function get_selectedOption():OptionData {
+        return { text: options[selectedIndex], id: ids[selectedIndex] };
     }
 
     function set_selectedIndex(v:Int):Int {
