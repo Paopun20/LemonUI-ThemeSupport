@@ -1,5 +1,6 @@
 package lemonui.elements;
 
+import flixel.math.FlxRect;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -24,6 +25,8 @@ class Dropdown extends ElementBase {
     public var selectedLabel(get, set):String;
     public var isOpen:Bool = false;
     public var dropWidth:Int;
+
+    public var offsetY:Float = 0;
 
     public dynamic function onChange(index:Int, label:String) {}
 
@@ -153,23 +156,26 @@ class Dropdown extends ElementBase {
 
     override function draw() {
         syncListVisibility();
+        this.y -= offsetY;
         super.draw();
+        this.y += offsetY;
     }
 
     override function update(elapsed:Float) {
         super.update(elapsed);
         if (!this.visible) return;
-
         if (FlxG.mouse.justPressed) {
             if (isOpen) {
                 var clicked = false;
                 for (i in 0...listItems.length) {
+                    listItems[i].y -= offsetY;
                     if (FlxG.mouse.overlaps(listItems[i])) {
                         selectedIndex = i;
                         onChange(i, options[i]);
                         clicked = true;
                         break;
                     }
+                    listItems[i].y += offsetY;
                 }
                 close();
                 if (!clicked && FlxG.mouse.overlaps(background)) {
@@ -180,14 +186,23 @@ class Dropdown extends ElementBase {
         }
 
         if (isOpen) {
+
+            offsetY -= FlxG.mouse.wheel * 10;
+            offsetY = offsetY < 0 ? 0 : offsetY;
+
             for (i in 0...listItems.length) {
+                listItems[i].y -= offsetY;
                 if (FlxG.mouse.overlaps(listItems[i])) {
                     listItems[i].color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.15);
                 } else {
                     listItems[i].color = elementColor;
                 }
+                listItems[i].y += offsetY;
             }
+        } else {
+            offsetY = 0;
         }
+        this.clipRect = new FlxRect(0, offsetY, 500, 500);
     }
 
     override function onColorChange(value:FlxColor) {
