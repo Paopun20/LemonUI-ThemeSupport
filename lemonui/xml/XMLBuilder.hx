@@ -81,6 +81,7 @@ class XMLBuilder {
                     for (tabChild in child.elements()) {
                         var childEl = createElement(normalizeTag(tabChild.nodeName), tabChild);
                         if (childEl == null) continue;
+                        childEl.id = tabChild.get("id");
                         var xA = tabChild.get("x");
                         var yA = tabChild.get("y");
                         if (xA != null) childEl.x = Std.parseFloat(xA);

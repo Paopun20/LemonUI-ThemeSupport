@@ -72,14 +72,15 @@ class Dropdown extends ElementBase {
 
         // Build option items
         for (i in options) {
-            addOption(i);
+            addOption(i, false);
         }
 
         elementColor = 0xFF3d3f41;
         if (options.length > 0) selectedIndex = 0;
     }
 
-    public function addOption(text:String) {
+    public function addOption(text:String, push:Bool = true) {
+        if (push) options.push(text);
         var i = listLabels.length;
 
         var itemY = fieldY + 25 + i * itemHeight;

@@ -11,7 +11,7 @@ class Menu extends Button {
 
     public var menuItems:Array<Button> = [];
 
-    public var parent:MenuBar;
+    // public var parent:MenuBar;
 
     override public function new(text:String) {
         super(0, 0, 100, 35, text);
@@ -56,7 +56,7 @@ class Menu extends Button {
     }
 
     public function open() {
-        if (parent != null) parent.closeAll();
+        if (parent != null) cast (parent, MenuBar)?.closeAll();
         isOpen = true;
         updateVisibilty();
         background.setGraphicSize(100, 35);

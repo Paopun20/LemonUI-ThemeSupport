@@ -6,6 +6,8 @@ import flixel.util.FlxColor;
 
 class ElementBase extends FlxSpriteGroup {
 
+    public var parent:ElementBase;
+
     public var id:String;
 
     public var elementColor(default, set):FlxColor = 0xFF3d3f41;
@@ -17,6 +19,7 @@ class ElementBase extends FlxSpriteGroup {
     public function onColorChange(value:FlxColor) {}
 
     public function addElement(component:ElementBase) {
+        component.parent = this;
         add(component);
     }
 
