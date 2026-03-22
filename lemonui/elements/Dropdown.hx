@@ -79,7 +79,7 @@ class Dropdown extends ElementBase {
         if (options.length > 0) selectedIndex = 0;
     }
 
-    function addOption(text:String) {
+    public function addOption(text:String) {
         var i = listLabels.length;
 
         var itemY = fieldY + 25 + i * itemHeight;
