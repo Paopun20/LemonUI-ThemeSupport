@@ -105,6 +105,8 @@ class XMLBuilder {
 
     static function createElement(tag:String, node:Xml):Null<ElementBase> {
         return switch (tag) {
+            case "text":
+                new Text(attrStr(node, "text", ""));
             case "button":
                 new Button(0, 0,
                     attrInt(node, "width", 100),
