@@ -27,11 +27,12 @@ class TabPanel extends ElementBase {
         this.panelWidth = panelWidth;
         this.panelHeight = panelHeight;
 
-        background = new FlxSprite(0, tabHeight).makeGraphic(panelWidth, panelHeight - tabHeight, FlxColor.WHITE);
+        background = new FlxSprite(0, tabHeight-10).makeGraphic(panelWidth, (panelHeight - tabHeight) + 10, FlxColor.WHITE);
         SpriteUtil.roundSpriteCorners(background, 4);
-        add(background);
+        insert(0, background);
 
-        tabBar = new FlxSprite(0, 0).makeGraphic(panelWidth, tabHeight, FlxColor.WHITE);
+        tabBar = new FlxSprite(0, 0).makeGraphic(panelWidth, tabHeight/*  + 10 */, FlxColor.WHITE);
+        SpriteUtil.roundSpriteCorners(tabBar, 4);
         add(tabBar);
 
         elementColor = 0xFF3d3f41;
@@ -75,7 +76,8 @@ class TabPanel extends ElementBase {
         var tabWidth = Math.round(panelWidth / tabs.length);
         for (i in 0...tabs.length) {
             var tab = tabs[i];
-            tab.bg.makeGraphic(tabWidth, tabHeight, FlxColor.WHITE);
+            tab.bg.makeGraphic(tabWidth, tabHeight /* + 10 */, FlxColor.WHITE);
+            SpriteUtil.roundSpriteCorners(tab.bg, 4);
             tab.bg.x = this.x + i * tabWidth;
             tab.bg.y = this.y;
             tab.label.fieldWidth = tabWidth;
@@ -101,7 +103,7 @@ class TabPanel extends ElementBase {
         for (i in 0...tabs.length) {
             var tab = tabs[i];
             if (i == selectedTab) {
-                tab.bg.color = elementColor;
+                tab.bg.color = FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.1);
                 tab.label.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.85);
             } else {
                 tab.bg.color = FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25);
