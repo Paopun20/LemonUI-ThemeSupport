@@ -38,7 +38,8 @@ class Menu extends Button {
 
         lastItem ??= newItem;
 
-        menuBG.makeGraphic(Math.round((newItem.x - 2) + (newItem.background.width + 5)), Math.round(lastItem.y + newItem.background.height + 10), FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25));
+        newItem.background.updateHitbox();
+        menuBG.makeGraphic(Math.round(newItem.background.width + 5), Math.round(this.height) - 31, FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25));
 
         menuItems.push(cast component);
         updateVisibilty();
