@@ -1,5 +1,9 @@
 package lemonui.utils;
 
+import flixel.FlxBasic;
+import flixel.FlxG;
+import lemonui.elements.TextInput;
+import flixel.FlxSprite;
 import lemonui.elements.MenuItem;
 import lemonui.elements.Menu;
 import lemonui.elements.MenuBar;
@@ -13,6 +17,31 @@ typedef ObjectComponent = {
 }
 
 class ElementUtil {
+
+    public static function checkFocused(element:FlxBasic):Bool {
+        try {
+            var casted = cast (element, ElementBase);
+            var out = false;
+            try {
+                if (cast (casted, TextInput).hasFocus) out = true;
+            } catch (_) { /* Do Nothing */}
+            for (i in (casted.members ?? [])) {
+                if (checkFocused(i)) out = true;
+            }
+            return out;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    public static var anythingFocused(get, never):Bool;
+    static function get_anythingFocused():Bool {
+        var out = false;
+        for (i in FlxG.state.members) {
+            if (checkFocused(i)) out = true;
+        }
+        return out;
+    }
 
     public static var example:ObjectComponent = {
         id: "test",

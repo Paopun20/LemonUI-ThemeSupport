@@ -48,8 +48,8 @@ class TabPanel extends ElementBase {
         tabLabel.font = Constants.FONT_BOLD;
         tabLabel.size = Math.round(12 * 1.75);
         tabLabel.scale.x = tabLabel.scale.y /= 1.75;
-        tabLabel.updateHitbox();
         tabLabel.alignment = CENTER;
+        tabLabel.updateHitbox();
         add(tabLabel);
 
         tabs.push({name: name, bg: tabBG, label: tabLabel, content: []});

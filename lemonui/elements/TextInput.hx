@@ -126,6 +126,7 @@ class TextInput extends ElementBase {
         tempText.scale.x = tempText.scale.y /= 1.75;
         tempText.updateHitbox();
         cursor.x = textDisplay.x + tempText.width;
+        if (text.length == 0) cursor.x = textDisplay.x;
         tempText.destroy();
     }
 
