@@ -67,10 +67,11 @@ class Dropdown extends ElementBase {
         selectedText.updateHitbox();
         add(selectedText);
 
-        arrow = new FlxText(dropWidth - 16, fieldY + 2, 16, "v");
+        arrow = new FlxText(dropWidth - 16, fieldY + 5, 16, "V");
         arrow.font = Constants.FONT_BOLD;
         arrow.size = Math.round(11 * 1.75);
         arrow.scale.x = arrow.scale.y /= 1.75;
+        arrow.scale.x *= 1.1;
         arrow.updateHitbox();
         arrow.alignment = CENTER;
         add(arrow);
@@ -164,7 +165,8 @@ class Dropdown extends ElementBase {
         listBG.visible = true;
         for (item in listItems) item.visible = true;
         for (lbl in listLabels) lbl.visible = true;
-        arrow.text = "^";
+        arrow.flipY = true;
+        arrow.updateHitbox();
     }
 
     function close() {
@@ -172,7 +174,8 @@ class Dropdown extends ElementBase {
         listBG.visible = false;
         for (item in listItems) item.visible = false;
         for (lbl in listLabels) lbl.visible = false;
-        arrow.text = "v";
+        arrow.flipY = false;
+        arrow.updateHitbox();
     }
 
     function syncListVisibility() {
