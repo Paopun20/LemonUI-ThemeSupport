@@ -51,7 +51,7 @@ class NumericStepper extends ElementBase {
         var btnSize = 12;
         var btnX = 74;
 
-        btnUp = new FlxSprite(btnX, fieldY).makeGraphic(20, btnSize, FlxColor.WHITE);
+        btnUp = new FlxSprite(btnX, fieldY).makeGraphic(btnSize, btnSize-1, FlxColor.WHITE);
         SpriteUtil.roundSpriteCorners(btnUp, 3);
         add(btnUp);
 
@@ -63,7 +63,7 @@ class NumericStepper extends ElementBase {
         lblUp.alignment = CENTER;
         add(lblUp);
 
-        btnDown = new FlxSprite(btnX, fieldY + btnSize).makeGraphic(20, btnSize, FlxColor.WHITE);
+        btnDown = new FlxSprite(btnX, fieldY + btnSize + 1).makeGraphic(btnSize, btnSize-1, FlxColor.WHITE);
         SpriteUtil.roundSpriteCorners(btnDown, 3);
         add(btnDown);
 
@@ -134,6 +134,14 @@ class NumericStepper extends ElementBase {
             }
         }
 
+        if (btnUp != null) btnUp.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.1);
+        if (btnDown != null) btnDown.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.1);
+        if (FlxG.mouse.overlaps(btnUp)) {
+            if (btnUp != null) btnUp.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, FlxG.mouse.pressed ? 0.35 : 0.2);
+        } else if (FlxG.mouse.overlaps(btnDown)) {
+            if (btnDown != null) btnDown.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, FlxG.mouse.pressed ? 0.35 : 0.2);
+        }
+        
         if (FlxG.mouse.justPressed) {
             if (FlxG.mouse.overlaps(btnUp)) {
                 value = value + step;
@@ -150,10 +158,10 @@ class NumericStepper extends ElementBase {
     override function onColorChange(value:FlxColor) {
         super.onColorChange(value);
         if (input != null) input.elementColor = value;
-        if (btnUp != null) btnUp.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.3);
-        if (btnDown != null) btnDown.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.3);
-        if (lblUp != null) lblUp.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.3);
-        if (lblDown != null) lblDown.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.3);
+        if (btnUp != null) btnUp.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.1);
+        if (btnDown != null) btnDown.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.1);
+        if (lblUp != null) lblUp.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.8);
+        if (lblDown != null) lblDown.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.8);
         if (label != null) label.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.85);
     }
 }
