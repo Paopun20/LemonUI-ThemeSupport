@@ -127,6 +127,13 @@ class NumericStepper extends ElementBase {
         super.update(elapsed);
         if (!this.visible) return;
 
+        if (FlxG.mouse.overlaps(input)) {
+            if (value != value + (FlxG.mouse.wheel * step)) {
+                value += FlxG.mouse.wheel * step;
+                onChange(value);
+            }
+        }
+
         if (FlxG.mouse.justPressed) {
             if (FlxG.mouse.overlaps(btnUp)) {
                 value = value + step;
