@@ -1,5 +1,6 @@
 package lemonui.elements;
 
+import lemonui.utils.ElementUtil;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -127,7 +128,7 @@ class NumericStepper extends ElementBase {
         super.update(elapsed);
         if (!this.visible) return;
 
-        if (FlxG.mouse.overlaps(input)) {
+        if (FlxG.mouse.overlaps(input) && !ElementUtil.anythingOpened) {
             if (value != value + (FlxG.mouse.wheel * step)) {
                 value += FlxG.mouse.wheel * step;
                 onChange(value);
