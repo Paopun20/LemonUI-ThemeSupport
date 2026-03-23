@@ -1,5 +1,6 @@
 package lemonui.elements;
 
+import lemonui.utils.ElementUtil;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.input.keyboard.FlxKey;
@@ -143,7 +144,7 @@ class TextInput extends ElementBase {
         super.update(elapsed);
         if (!this.visible) return;
 
-        if (FlxG.mouse.justPressed) {
+        if (FlxG.mouse.justPressed && !ElementUtil.anythingOpened) {
             hasFocus = FlxG.mouse.overlaps(background);
         }
 

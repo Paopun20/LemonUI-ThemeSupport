@@ -1,5 +1,6 @@
 package lemonui.utils;
 
+import lemonui.elements.Dropdown;
 import flixel.FlxBasic;
 import flixel.FlxG;
 import lemonui.elements.TextInput;
@@ -18,7 +19,12 @@ typedef ObjectComponent = {
 
 class ElementUtil {
 
-    public static function checkFocused(element:FlxBasic):Bool {
+
+    public static var anythingFocused(get, never):Bool;
+    public static var anythingOpened(get, never):Bool;
+
+
+    static function checkFocused(element:FlxBasic):Bool {
         try {
             var casted = cast (element, ElementBase);
             var out = false;
@@ -34,11 +40,37 @@ class ElementUtil {
         }
     }
 
-    public static var anythingFocused(get, never):Bool;
     static function get_anythingFocused():Bool {
         var out = false;
         for (i in FlxG.state.members) {
             if (checkFocused(i)) out = true;
+        }
+        return out;
+    }
+
+    static function checkOpened(element:FlxBasic):Bool {
+        try {
+            var casted = cast (element, ElementBase);
+            var out = false;
+            try {
+                if (cast (casted, Menu).isOpen) out = true;
+            } catch (_) { /* Do Nothing */}
+            try {
+                if (cast (casted, Dropdown).isOpen) out = true;
+            } catch (_) { /* Do Nothing */}
+            for (i in (casted.members ?? [])) {
+                if (checkOpened(i)) out = true;
+            }
+            return out;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    static function get_anythingOpened():Bool {
+        var out = false;
+        for (i in FlxG.state.members) {
+            if (checkOpened(i)) out = true;
         }
         return out;
     }
