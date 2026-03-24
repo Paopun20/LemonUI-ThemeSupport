@@ -60,6 +60,10 @@ class XMLBuilder {
             cast(el, ElementBase).elementColor = Std.parseInt(colorAttr);
         }
 
+        if (Std.isOfType(el, Button)) {
+            if (attrStr(node, "onClick", "").startsWith("https://")) (cast el).onClick = ()->flixel.FlxG.openURL(attrStr(node, "onClick", ""));
+        }
+
         if (Std.isOfType(parent, VBox)) {
             cast(parent, VBox).addElement(el);
         } else if (Std.isOfType(parent, HBox)) {
