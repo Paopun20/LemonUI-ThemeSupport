@@ -63,6 +63,7 @@ class Button extends ElementBase {
         if (FlxG.mouse.overlaps(background) && this.visible) {
             if (FlxG.mouse.justPressed) {
                 onClick();
+                onClickSignal.dispatch();
                 _onClick();
             }
             if (FlxG.mouse.pressed) {
