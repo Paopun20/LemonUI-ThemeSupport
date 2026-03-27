@@ -139,6 +139,7 @@ class XMLBuilder {
             case "numericstepper":
                 new NumericStepper(0, 0,
                     attrStr(node, "label", ""),
+                    attrInt(node, "width", 70),
                     attrFloat(node, "defaultValue", 0),
                     attrFloat(node, "min", 0),
                     attrFloat(node, "max", 999),

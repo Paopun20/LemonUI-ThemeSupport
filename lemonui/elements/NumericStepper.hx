@@ -26,7 +26,7 @@ class NumericStepper extends ElementBase {
 
     public dynamic function onChange(value:Float) {}
 
-    public function new(x:Float = 0, y:Float = 0, labelText:String, defaultValue:Float = 0, min:Float = 0, max:Float = 999, step:Float = 1, decimals:Int = 0) {
+    public function new(x:Float = 0, y:Float = 0, labelText:String, width:Int = 100, defaultValue:Float = 0, min:Float = 0, max:Float = 999, step:Float = 1, decimals:Int = 0) {
         super(x, y);
 
         this.min = min;
@@ -43,14 +43,14 @@ class NumericStepper extends ElementBase {
 
         var fieldY = Math.round(label.height + 4);
 
-        input = new TextInput(0, 0, "", 70, "", 10);
+        input = new TextInput(0, 0, "", width, "", 10);
         input.y = fieldY - Math.round(input.label.height + 4);
         input.onChange = function(txt) { validateAndApply(txt); };
         input.onSubmit = function(txt) { validateAndApply(txt); };
         add(input);
 
         var btnSize = 12;
-        var btnX = 74;
+        var btnX = width + 4;
 
         btnUp = new FlxSprite(btnX, fieldY).makeGraphic(btnSize, btnSize-1, FlxColor.WHITE);
         SpriteUtil.roundSpriteCorners(btnUp, 3);
@@ -142,7 +142,7 @@ class NumericStepper extends ElementBase {
         } else if (FlxG.mouse.overlaps(btnDown)) {
             if (btnDown != null) btnDown.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, FlxG.mouse.pressed ? 0.35 : 0.2);
         }
-        
+
         if (FlxG.mouse.justPressed) {
             if (FlxG.mouse.overlaps(btnUp)) {
                 value = value + step;
