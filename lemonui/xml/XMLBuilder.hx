@@ -70,6 +70,8 @@ class XMLBuilder {
             cast(parent, HBox).addElement(el);
         } else if (Std.isOfType(parent, Menu) && Std.isOfType(el, MenuItem)) {
             cast(parent, Menu).addElement(el);
+        } else if (Std.isOfType(parent, Menu) && Std.isOfType(el, MenuSeparator)) {
+            cast(parent, Menu).addElement(el);
         } else if (Std.isOfType(parent, MenuBar) && Std.isOfType(el, Menu)) {
             cast(parent, MenuBar).addElement(el);
         } else {
@@ -158,10 +160,14 @@ class XMLBuilder {
                 new MenuBar(0, 0);
             case "menu":
                 new Menu(attrStr(node, "text", "Menu"));
+            case "menuseparator":
+                new MenuSeparator(
+                    attrInt(node, "width", 300),
+                    attrInt(node, "height", 2));
             case "menuitem":
                 new MenuItem(
                     attrInt(node, "width", 300),
-                    attrInt(node, "height", 40),
+                    attrInt(node, "height", 30),
                     attrStr(node, "text", ""));
             case "notification":
                 new Notification(
