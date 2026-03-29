@@ -159,7 +159,9 @@ class XMLBuilder {
             case "menubar":
                 new MenuBar(0, 0);
             case "menu":
-                new Menu(attrStr(node, "text", "Menu"));
+                new Menu(
+                    attrInt(node, "width", 75),
+                    attrStr(node, "text", "Menu"));
             case "menuseparator":
                 new MenuSeparator(
                     attrInt(node, "width", 300),

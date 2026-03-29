@@ -11,10 +11,13 @@ class Menu extends Button {
 
     public var menuItems:Array<Button> = [];
 
-    // public var parent:MenuBar;
+    public var targetWidth:Int = 75;
 
-    override public function new(text:String) {
-        super(0, 0, 100, 35, text);
+    // public var parent:MenuBar;`
+
+    override public function new(width:Int = 75, text:String) {
+        targetWidth = width;
+        super(0, 0, width, 35, text);
         menuBG = new FlxSprite(0, this.height-2);
         insert(0, menuBG);
 
@@ -53,14 +56,14 @@ class Menu extends Button {
     public function close() {
         isOpen = false;
         updateVisibilty();
-        background.setGraphicSize(100, 30);
+        background.setGraphicSize(targetWidth, 30);
     }
 
     public function open() {
         if (parent != null) cast (parent, MenuBar)?.closeAll();
         isOpen = true;
         updateVisibilty();
-        background.setGraphicSize(100, 35);
+        background.setGraphicSize(targetWidth, 35);
     }
 
     public function updateVisibilty() {
