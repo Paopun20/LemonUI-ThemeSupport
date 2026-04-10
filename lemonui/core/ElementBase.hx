@@ -3,6 +3,7 @@ package lemonui.core;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
+import lemonui.themes.ThemeManager;
 
 class ElementBase extends FlxSpriteGroup {
 
@@ -10,7 +11,7 @@ class ElementBase extends FlxSpriteGroup {
 
     public var id:String;
 
-    public var elementColor(default, set):FlxColor = 0xFF3d3f41;
+    public var elementColor(default, set):FlxColor = ThemeManager.backgroundColor;
     function set_elementColor(value:FlxColor) {
         onColorChange(value);
         return elementColor = value;

@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
 import lemonui.core.ElementBase;
+import lemonui.themes.Theme;
 import lemonui.utils.SpriteUtil;
 
 typedef OptionData = {
@@ -87,7 +88,7 @@ class Dropdown extends ElementBase {
             addOption(i, false);
         }
 
-        elementColor = 0xFF3d3f41;
+        elementColor = Theme.defaultTheme.styles.backgroundColor;
         if (options.length > 0) selectedIndex = 0;
     }
 

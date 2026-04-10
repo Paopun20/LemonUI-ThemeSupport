@@ -35,7 +35,6 @@ class TabPanel extends ElementBase {
         SpriteUtil.roundSpriteCorners(tabBar, 4);
         add(tabBar);
 
-        elementColor = 0xFF3d3f41;
     }
 
     public function addTab(name:String):Int {

@@ -48,6 +48,14 @@ class Menu extends Button {
         updateVisibilty();
     }
 
+    override function onColorChange(value:FlxColor) {
+        super.onColorChange(value);
+        if (menuBG != null) menuBG.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.25);
+        for (item in menuItems) {
+            item.elementColor = value;
+        }
+    }
+
     override function _onClick() {
         super._onClick();
         isOpen ? close() : open();

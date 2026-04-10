@@ -92,7 +92,6 @@ class TextInput extends ElementBase {
         cursor.visible = false;
         add(cursor);
 
-        elementColor = 0xFF3d3f41;
         text = defaultValue;
         cursorPos = defaultValue.length;
     }

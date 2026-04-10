@@ -57,7 +57,6 @@ class Slider extends ElementBase {
         SpriteUtil.roundSpriteCorners(handle, 8);
         add(handle);
 
-        elementColor = 0xFF3d3f41;
         value = defaultValue;
     }
 

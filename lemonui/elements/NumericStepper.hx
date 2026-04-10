@@ -76,7 +76,6 @@ class NumericStepper extends ElementBase {
         lblDown.alignment = CENTER;
         add(lblDown);
 
-        elementColor = 0xFF3d3f41;
         value = defaultValue;
     }
 

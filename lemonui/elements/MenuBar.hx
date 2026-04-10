@@ -2,6 +2,7 @@ package lemonui.elements;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 
 class MenuBar extends ElementBase {
@@ -15,10 +16,12 @@ class MenuBar extends ElementBase {
         return value;
     }
 
+    public var background:FlxSprite;
+
     public function new(x:Int = 0, y:Int = 0) {
         super(x, y);
 
-        var background = new FlxSprite(0, 0).makeGraphic(FlxG.width, 35, elementColor);
+        background = new FlxSprite(0, 0).makeGraphic(FlxG.width, 35, elementColor);
         add(background);
     }
 
@@ -32,6 +35,11 @@ class MenuBar extends ElementBase {
         component.x = lastItem == null ? 0 : lastItem.x + lastItem.background.width;
 
         menuItems.push(cast component);
+    }
+
+    override function onColorChange(value:FlxColor) {
+        super.onColorChange(value);
+        if (background != null) background.color = value;
     }
 
     override function update(elapsed:Float) {
