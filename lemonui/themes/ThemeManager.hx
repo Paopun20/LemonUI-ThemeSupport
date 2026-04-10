@@ -4,7 +4,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSignal;
 
 class ThemeManager {
-    public static var instance:ThemeManager;
     public static var currentTheme:Theme = Theme.defaultTheme;
     public static var onThemeChange:FlxSignal = new FlxSignal();
 
