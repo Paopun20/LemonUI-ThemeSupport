@@ -6,7 +6,7 @@
   "description": "A clean ui library with a taste of citris.",
   "version": "0.0.0",
   "releasenote": "Initial release of LemonUI.",
-  "contributors": ["NebulaStellaNova", "Rodney"],
+  "contributors": ["NebulaStellaNova", "Rodney Furball <3"],
   "dependencies": {
     "lime": "",
     "flixel": "",
