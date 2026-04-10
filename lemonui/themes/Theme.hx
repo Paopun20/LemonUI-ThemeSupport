@@ -41,12 +41,7 @@ class DarkTheme extends Theme
 			activeColor: 0xFF2d2f31,
 			borderColor: 0xFF000000,
 			disabledColor: 0xFF7a7d81,
-			accentColor: 0xFF3498db,
-			fontRegular: "",
-			fontBold: "",
-			fontSize: 13,
-			titleSize: 16,
-			smallSize: 11
+			accentColor: 0xFF3498db
 		};
 	}
 }
@@ -65,12 +60,7 @@ class LightTheme extends Theme
 			activeColor: 0xFFF5F5F5,
 			borderColor: 0xFFCCCCCC,
 			disabledColor: 0xFFA0A0A0,
-			accentColor: 0xFF2980b9,
-			fontRegular: "",
-			fontBold: "",
-			fontSize: 13,
-			titleSize: 16,
-			smallSize: 11
+			accentColor: 0xFF2980b9
 		};
 	}
 }
@@ -89,12 +79,7 @@ class BlueTheme extends Theme
 			activeColor: 0xFF1A252F,
 			borderColor: 0xFF000000,
 			disabledColor: 0xFF7F8C8D,
-			accentColor: 0xFF3498db,
-			fontRegular: "",
-			fontBold: "",
-			fontSize: 13,
-			titleSize: 16,
-			smallSize: 11
+			accentColor: 0xFF3498db
 		};
 	}
 }
