@@ -8,6 +8,8 @@ import flixel.util.FlxSignal;
 import lemonui.core.ElementBase;
 import lemonui.controllers.TooltipController;
 
+import lemonui.themes.ThemeManager;
+
 class Button extends ElementBase {
 
     public var background:FlxSprite;
@@ -35,7 +37,7 @@ class Button extends ElementBase {
         add(hoverSprite);
 
         buttonText = new FlxText(5, 5, 0, text);
-        buttonText.font = Constants.FONT_BOLD;
+        buttonText.font = ThemeManager.fontBold;
         buttonText.size = Math.round(13*1.75);
         buttonText.scale.x = buttonText.scale.y /= 1.75;
         buttonText.updateHitbox();

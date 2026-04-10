@@ -9,6 +9,8 @@ import lemonui.controllers.TooltipController;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+import lemonui.themes.ThemeManager;
+
 class Tooltip extends ElementBase {
 
     public var outline:FlxSprite;
@@ -26,7 +28,7 @@ class Tooltip extends ElementBase {
         add(background);
 
         label = new FlxText(10, 6, 0, "");
-        label.font = Constants.FONT_REGULAR;
+        label.font = ThemeManager.fontRegular;
         label.size = Math.round(12 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();

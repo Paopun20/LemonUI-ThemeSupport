@@ -10,6 +10,8 @@ import openfl.display.Shape;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+import lemonui.themes.ThemeManager;
+
 class Tickbox extends ElementBase {
 
     public var box:FlxSprite;
@@ -38,7 +40,7 @@ class Tickbox extends ElementBase {
         add(checkmark);
 
         label = new FlxText(30, 2, 0, text);
-        label.font = Constants.FONT_REGULAR;
+        label.font = ThemeManager.fontRegular;
         label.size = Math.round(13 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();

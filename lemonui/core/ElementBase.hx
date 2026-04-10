@@ -1,5 +1,6 @@
 package lemonui.core;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
@@ -37,4 +38,41 @@ class ElementBase extends FlxSpriteGroup {
         return null;
     }
 
+    static var _initialized:Bool = false;
+
+    public static function initThemeListeners() {
+        if (_initialized) return;
+        _initialized = true;
+        ThemeManager.onThemeChange.add(applyThemeToAll);
+    }
+
+    static function applyThemeToAll() {
+        if (FlxG.state == null) {
+            return;
+        }
+        var allMembers = FlxG.state.members;
+        for (obj in allMembers) {
+            if (obj != null) {
+                applyThemeRecursive(obj);
+            }
+        }
+    }
+
+    static function applyThemeRecursive(obj:flixel.FlxBasic) {
+        if (Std.isOfType(obj, ElementBase)) {
+            var el:ElementBase = cast obj;
+            el.elementColor = ThemeManager.backgroundColor;
+        }
+        if (Std.isOfType(obj, FlxSpriteGroup)) {
+            var group:FlxSpriteGroup = cast obj;
+            for (member in group.members) {
+                if (member != null) applyThemeRecursive(member);
+            }
+        }
+    }
+
+    public function new(x:Float = 0, y:Float = 0) {
+        super(x, y);
+        initThemeListeners();
+    }
 }

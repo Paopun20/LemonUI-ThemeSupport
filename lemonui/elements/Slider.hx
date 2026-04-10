@@ -10,6 +10,8 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+import lemonui.themes.ThemeManager;
+
 class Slider extends ElementBase {
 
     public var track:FlxSprite;
@@ -37,7 +39,7 @@ class Slider extends ElementBase {
         this.trackWidth = trackWidth;
 
         label = new FlxText(0, 0, 0, text);
-        label.font = Constants.FONT_REGULAR;
+        label.font = ThemeManager.fontRegular;
         label.size = Math.round(13 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();

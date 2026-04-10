@@ -8,6 +8,8 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+import lemonui.themes.ThemeManager;
+
 class TabPanel extends ElementBase {
 
     public var background:FlxSprite;
@@ -45,7 +47,7 @@ class TabPanel extends ElementBase {
         add(tabBG);
 
         var tabLabel = new FlxText(0, 6, tabWidth, name);
-        tabLabel.font = Constants.FONT_BOLD;
+        tabLabel.font = ThemeManager.fontBold;
         tabLabel.size = Math.round(12 * 1.75);
         tabLabel.scale.x = tabLabel.scale.y /= 1.75;
         tabLabel.alignment = CENTER;
