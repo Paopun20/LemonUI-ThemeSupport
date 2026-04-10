@@ -7,7 +7,10 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
 import lemonui.core.ElementBase;
+import lemonui.themes.Theme;
 import lemonui.utils.SpriteUtil;
+
+import lemonui.themes.ThemeManager;
 
 typedef OptionData = {
     var text:String;
@@ -48,7 +51,7 @@ class Dropdown extends ElementBase {
         this.dropWidth = dropWidth;
 
         label = new FlxText(0, 0, 0, labelText);
-        label.font = Constants.FONT_REGULAR;
+        label.font = ThemeManager.fontRegular;
         label.size = Math.round(13 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();
@@ -61,14 +64,14 @@ class Dropdown extends ElementBase {
         add(background);
 
         selectedText = new FlxText(6, fieldY + 4, 0, "");
-        selectedText.font = Constants.FONT_REGULAR;
+        selectedText.font = ThemeManager.fontRegular;
         selectedText.size = Math.round(13 * 1.75);
         selectedText.scale.x = selectedText.scale.y /= 1.75;
         selectedText.updateHitbox();
         add(selectedText);
 
         arrow = new FlxText(dropWidth - 16, fieldY + 5, 16, "V");
-        arrow.font = Constants.FONT_BOLD;
+        arrow.font = ThemeManager.fontBold;
         arrow.size = Math.round(11 * 1.75);
         arrow.scale.x = arrow.scale.y /= 1.75;
         arrow.scale.x *= 1.1;
@@ -87,7 +90,7 @@ class Dropdown extends ElementBase {
             addOption(i, false);
         }
 
-        elementColor = 0xFF3d3f41;
+        elementColor = Theme.defaultTheme.styles.backgroundColor;
         if (options.length > 0) selectedIndex = 0;
     }
 
@@ -104,7 +107,7 @@ class Dropdown extends ElementBase {
         listItems.push(itemBG);
 
         var itemLabel = new FlxText(6, itemY + 3, 0, text);
-        itemLabel.font = Constants.FONT_REGULAR;
+        itemLabel.font = ThemeManager.fontRegular;
         itemLabel.size = Math.round(13 * 1.75);
         itemLabel.scale.x = itemLabel.scale.y /= 1.75;
         itemLabel.updateHitbox();

@@ -8,6 +8,8 @@ import flixel.util.FlxSignal;
 import lemonui.core.ElementBase;
 import lemonui.controllers.TooltipController;
 
+import lemonui.themes.ThemeManager;
+
 class Button extends ElementBase {
 
     public var background:FlxSprite;
@@ -35,13 +37,20 @@ class Button extends ElementBase {
         add(hoverSprite);
 
         buttonText = new FlxText(5, 5, 0, text);
-        buttonText.font = Constants.FONT_BOLD;
+        buttonText.font = ThemeManager.fontBold;
         buttonText.size = Math.round(13*1.75);
         buttonText.scale.x = buttonText.scale.y /= 1.75;
         buttonText.updateHitbox();
         buttonText.x = (background.width/2) - (buttonText.width/2);
         buttonText.y = (background.height/2) - (buttonText.height/2);
         add(buttonText);
+    }
+
+    override function onColorChange(value:FlxColor) {
+        super.onColorChange(value);
+        if (background != null) background.color = value;
+        if (hoverSprite != null) hoverSprite.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.25);
+        if (buttonText != null) buttonText.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.85);
     }
 
     public var tooltipText:String = "";

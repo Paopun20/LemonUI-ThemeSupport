@@ -10,6 +10,8 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
+import lemonui.themes.ThemeManager;
+
 class TextInput extends ElementBase {
 
     public var background:FlxSprite;
@@ -69,7 +71,7 @@ class TextInput extends ElementBase {
         this.maxLength = maxLength;
 
         label = new FlxText(0, 0, 0, labelText);
-        label.font = Constants.FONT_REGULAR;
+        label.font = ThemeManager.fontRegular;
         label.size = Math.round(13 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();
@@ -82,7 +84,7 @@ class TextInput extends ElementBase {
         add(background);
 
         textDisplay = new FlxText(6, fieldY + 4, wordWrap ? fieldWidth - 12 : 0, defaultValue);
-        textDisplay.font = Constants.FONT_REGULAR;
+        textDisplay.font = ThemeManager.fontRegular;
         textDisplay.size = Math.round(13 * 1.75);
         textDisplay.scale.x = textDisplay.scale.y /= 1.75;
         textDisplay.updateHitbox();
@@ -92,7 +94,6 @@ class TextInput extends ElementBase {
         cursor.visible = false;
         add(cursor);
 
-        elementColor = 0xFF3d3f41;
         text = defaultValue;
         cursorPos = defaultValue.length;
     }
@@ -122,7 +123,7 @@ class TextInput extends ElementBase {
         if (cursor == null || textDisplay == null) return;
         var sub = text.substr(0, cursorPos);
         var tempText = new FlxText(0, 0, 0, sub);
-        tempText.font = Constants.FONT_REGULAR;
+        tempText.font = ThemeManager.fontRegular;
         tempText.size = Math.round(13 * 1.75);
         tempText.scale.x = tempText.scale.y /= 1.75;
         tempText.updateHitbox();
