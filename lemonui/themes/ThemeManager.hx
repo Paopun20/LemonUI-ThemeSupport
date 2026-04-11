@@ -4,8 +4,13 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSignal;
 
 class ThemeManager {
-    public static var currentTheme:Theme = Theme.defaultTheme;
     public static var onThemeChange:FlxSignal = new FlxSignal();
+    public static var currentTheme(default, set):Theme = Theme.defaultTheme;
+    inline static function set_currentTheme(value:Theme):Theme {
+        currentTheme = value;
+        onThemeChange.dispatch();
+        return currentTheme;
+    }
 
     public static var backgroundColor(get, never):FlxColor;
     public static var textColor(get, never):FlxColor;
@@ -32,11 +37,6 @@ class ThemeManager {
     static function get_fontSize():Int return currentTheme.styles.fontSize;
     static function get_titleSize():Int return currentTheme.styles.titleSize;
     static function get_smallSize():Int return currentTheme.styles.smallSize;
-
-    public static function setTheme(theme:Theme) {
-        currentTheme = theme;
-        onThemeChange.dispatch();
-    }
 
     public static function createTheme(?backgroundColor:FlxColor, ?textColor:FlxColor, ?hoverColor:FlxColor, ?activeColor:FlxColor, ?borderColor:FlxColor, ?disabledColor:FlxColor, ?accentColor:FlxColor, ?fontRegular:String, ?fontBold:String, ?fontSize:Int, ?titleSize:Int, ?smallSize:Int):Theme {
         var theme = new Theme();
