@@ -2,8 +2,8 @@ package lemonui.themes;
 
 import flixel.util.FlxColor;
 
-@:structInit class BaseTheme
-{
+@:structInit class BaseTheme {
+
 	public var backgroundColor:FlxColor = 0xFF3d3f41;
 	public var textColor:FlxColor = 0xFFFFFFFF;
 	public var hoverColor:FlxColor = 0xFF5a5d61;
@@ -11,28 +11,29 @@ import flixel.util.FlxColor;
 	public var borderColor:FlxColor = 0xFF000000;
 	public var disabledColor:FlxColor = 0xFF7a7d81;
 	public var accentColor:FlxColor = 0xFF3498db;
-	public var fontRegular:String = "";
-	public var fontBold:String = "";
+	public var fontRegular:String = '';
+	public var fontBold:String = '';
 	public var fontSize:Int = 13;
 	public var titleSize:Int = 16;
 	public var smallSize:Int = 11;
+
 }
 
-class Theme
-{
+class Theme {
+
 	public static final defaultTheme:Theme = new Theme();
 
 	public var styles:BaseTheme = {}
 
 	public function new() {}
+
 }
 
-class DarkTheme extends Theme
-{
+class DarkTheme extends Theme {
+
 	public static final instance = new DarkTheme();
 
-	public function new()
-	{
+	public function new() {
 		super();
 		styles = {
 			backgroundColor: 0xFF3d3f41,
@@ -44,14 +45,14 @@ class DarkTheme extends Theme
 			accentColor: 0xFF3498db
 		}
 	}
+
 }
 
-class LightTheme extends Theme
-{
+class LightTheme extends Theme {
+
 	public static final instance = new LightTheme();
 
-	public function new()
-	{
+	public function new() {
 		super();
 		styles = {
 			backgroundColor: 0xFFE8E8E8,
@@ -63,14 +64,14 @@ class LightTheme extends Theme
 			accentColor: 0xFF2980b9
 		}
 	}
+
 }
 
-class BlueTheme extends Theme
-{
+class BlueTheme extends Theme {
+
 	public static final instance = new BlueTheme();
 
-	public function new()
-	{
+	public function new() {
 		super();
 		styles = {
 			backgroundColor: 0xFF2C3E50,
@@ -82,4 +83,5 @@ class BlueTheme extends Theme
 			accentColor: 0xFF3498db
 		}
 	}
+
 }

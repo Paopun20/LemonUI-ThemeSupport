@@ -5,77 +5,79 @@ import flixel.FlxSprite;
 import lemonui.core.ElementBase;
 
 class Menu extends Button {
-    public var menuBG:FlxSprite;
 
-    public var isOpen:Bool = false;
+	public var menuBG:FlxSprite;
 
-    public var menuItems:Array<Button> = [];
+	public var isOpen:Bool = false;
 
-    public var targetWidth:Int = 75;
+	public var menuItems:Array<Button> = [];
 
-    // public var parent:MenuBar;`
+	public var targetWidth:Int = 75;
 
-    override public function new(width:Int = 75, text:String) {
-        targetWidth = width;
-        super(0, 0, width, 35, text);
-        menuBG = new FlxSprite(0, this.height-2);
-        insert(0, menuBG);
+	// public var parent:MenuBar;`
 
-    }
+	override public function new(width:Int = 75, text:String) {
+		targetWidth = width;
+		super(0, 0, width, 35, text);
+		menuBG = new FlxSprite(0, this.height-2);
+		insert(0, menuBG);
 
-    override function addElement(component:ElementBase) {
-        super.addElement(component);
+	}
 
-        var newItem:Button = cast component;
-        var lastItem:Button = menuItems[menuItems.length-1];
-        if (lastItem == null) {
-            component.y = this.background.height;
-            component.visible = false;
-            component.x += 2;
-            // component.y += 2;
-        } else {
-            component.x = lastItem.x;
-            component.y = lastItem.y + lastItem.background.height;
-            component.visible = false;
-        }
+	override function addElement(component:ElementBase) {
+		super.addElement(component);
 
-        lastItem ??= newItem;
+		var newItem:Button = cast component;
+		var lastItem:Button = menuItems[menuItems.length-1];
+		if (lastItem == null) {
+			component.y = this.background.height;
+			component.visible = false;
+			component.x += 2;
+			// component.y += 2;
+		} else {
+			component.x = lastItem.x;
+			component.y = lastItem.y + lastItem.background.height;
+			component.visible = false;
+		}
 
-        newItem.background.updateHitbox();
-        menuBG.makeGraphic(Math.round(newItem.background.width + 5), Math.round(this.height) - 31, FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25));
+		lastItem ??= newItem;
 
-        menuItems.push(cast component);
-        updateVisibilty();
-    }
+		newItem.background.updateHitbox();
+		menuBG.makeGraphic(Math.round(newItem.background.width + 5), Math.round(this.height) - 31, FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25));
 
-    override function onColorChange(value:FlxColor) {
-        super.onColorChange(value);
-        if (menuBG != null) menuBG.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.25);
-        for (item in menuItems) {
-            item.elementColor = value;
-        }
-    }
+		menuItems.push(cast component);
+		updateVisibility();
+	}
 
-    override function _onClick() {
-        super._onClick();
-        isOpen ? close() : open();
-    }
+	override function onColorChange(value:FlxColor) {
+		super.onColorChange(value);
+		if (menuBG != null) menuBG.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.25);
+		for (item in menuItems) {
+			item.elementColor = value;
+		}
+	}
 
-    public function close() {
-        isOpen = false;
-        updateVisibilty();
-        background.setGraphicSize(targetWidth, 30);
-    }
+	override function _onClick() {
+		super._onClick();
+		isOpen ? close() : open();
+	}
 
-    public function open() {
-        if (parent != null) cast (parent, MenuBar)?.closeAll();
-        isOpen = true;
-        updateVisibilty();
-        background.setGraphicSize(targetWidth, 35);
-    }
+	public function close() {
+		isOpen = false;
+		updateVisibility();
+		background.setGraphicSize(targetWidth, 30);
+	}
 
-    public function updateVisibilty() {
-        for (i in menuItems) i.visible = isOpen;
-        menuBG.visible = isOpen;
-    }
+	public function open() {
+		if (parent != null) cast (parent, MenuBar)?.closeAll();
+		isOpen = true;
+		updateVisibility();
+		background.setGraphicSize(targetWidth, 35);
+	}
+
+	public function updateVisibility() {
+		for (i in menuItems) i.visible = isOpen;
+		menuBG.visible = isOpen;
+	}
+
 }
