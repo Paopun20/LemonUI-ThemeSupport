@@ -22,7 +22,7 @@ class Theme
 {
 	public static final defaultTheme:Theme = new Theme();
 
-	public var styles:BaseTheme = {}
+	public var styles:BaseTheme = {};
 
 	public function new() {}
 }
@@ -42,7 +42,7 @@ class DarkTheme extends Theme
 			borderColor: 0xFF000000,
 			disabledColor: 0xFF7a7d81,
 			accentColor: 0xFF3498db
-		}
+		};
 	}
 }
 
@@ -61,7 +61,7 @@ class LightTheme extends Theme
 			borderColor: 0xFFCCCCCC,
 			disabledColor: 0xFFA0A0A0,
 			accentColor: 0xFF2980b9
-		}
+		};
 	}
 }
 
@@ -80,6 +80,6 @@ class BlueTheme extends Theme
 			borderColor: 0xFF000000,
 			disabledColor: 0xFF7F8C8D,
 			accentColor: 0xFF3498db
-		}
+		};
 	}
 }
