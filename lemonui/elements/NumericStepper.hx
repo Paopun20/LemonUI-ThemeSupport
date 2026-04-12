@@ -9,8 +9,6 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
-import lemonui.themes.ThemeManager;
-
 class NumericStepper extends ElementBase {
 
     public var input:TextInput;
@@ -37,7 +35,7 @@ class NumericStepper extends ElementBase {
         this.decimals = decimals;
 
         label = new FlxText(0, 0, 0, labelText);
-        label.font = ThemeManager.fontRegular;
+        label.font = Constants.FONT_REGULAR;
         label.size = Math.round(13 * 1.75);
         label.scale.x = label.scale.y /= 1.75;
         label.updateHitbox();
@@ -59,7 +57,7 @@ class NumericStepper extends ElementBase {
         add(btnUp);
 
         lblUp = new FlxText(btnX, fieldY - 1, 20, "+");
-        lblUp.font = ThemeManager.fontBold;
+        lblUp.font = Constants.FONT_BOLD;
         lblUp.size = Math.round(10 * 1.75);
         lblUp.scale.x = lblUp.scale.y /= 1.75;
         lblUp.updateHitbox();
@@ -71,13 +69,14 @@ class NumericStepper extends ElementBase {
         add(btnDown);
 
         lblDown = new FlxText(btnX, fieldY + btnSize - 1, 20, "-");
-        lblDown.font = ThemeManager.fontBold;
+        lblDown.font = Constants.FONT_BOLD;
         lblDown.size = Math.round(10 * 1.75);
         lblDown.scale.x = lblDown.scale.y /= 1.75;
         lblDown.updateHitbox();
         lblDown.alignment = CENTER;
         add(lblDown);
 
+        elementColor = 0xFF3d3f41;
         value = defaultValue;
     }
 

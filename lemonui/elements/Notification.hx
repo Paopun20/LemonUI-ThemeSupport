@@ -7,8 +7,6 @@ import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
 
-import lemonui.themes.ThemeManager;
-
 class Notification extends ElementBase {
 
     public var outline:FlxSprite;
@@ -34,7 +32,7 @@ class Notification extends ElementBase {
         add(background);
 
         title = new FlxText(12, 8, 0, TITLE);
-        title.font = ThemeManager.fontBold;
+        title.font = Constants.FONT_BOLD;
         title.size = Math.round(16*1.75);
         title.scale.x = title.scale.y /= 1.75;
         title.updateHitbox();
@@ -44,12 +42,13 @@ class Notification extends ElementBase {
         add(line);
 
         body = new FlxText(12, 37, line.width * 1.75, BODY);
-        body.font = ThemeManager.fontRegular;
+        body.font = Constants.FONT_REGULAR;
         body.size = Math.round(14*1.75);
         body.scale.x = body.scale.y /= 1.75;
         body.updateHitbox();
         add(body);
 
+        elementColor = 0xFF3d3f41;
     }
 
     override function onColorChange(value:FlxColor) {

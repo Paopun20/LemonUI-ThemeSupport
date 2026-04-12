@@ -18,8 +18,11 @@ typedef ObjectComponent = {
 }
 
 class ElementUtil {
+
+
     public static var anythingFocused(get, never):Bool;
     public static var anythingOpened(get, never):Bool;
+
 
     static function checkFocused(element:FlxBasic):Bool {
         try {

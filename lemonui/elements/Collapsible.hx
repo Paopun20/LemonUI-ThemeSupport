@@ -5,10 +5,9 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
+import lemonui.Constants;
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
-
-import lemonui.themes.ThemeManager;
 
 class Collapsible extends ElementBase {
 
@@ -35,20 +34,21 @@ class Collapsible extends ElementBase {
         add(header);
 
         arrow = new FlxText(4, 4, 16, open ? "v" : ">");
-        arrow.font = ThemeManager.fontBold;
+        arrow.font = Constants.FONT_BOLD;
         arrow.size = Math.round(11 * 1.75);
         arrow.scale.x = arrow.scale.y /= 1.75;
         arrow.updateHitbox();
         add(arrow);
 
         titleText = new FlxText(18, 4, panelWidth - 22, title);
-        titleText.font = ThemeManager.fontBold;
+        titleText.font = Constants.FONT_BOLD;
         titleText.size = Math.round(12 * 1.75);
         titleText.scale.x = titleText.scale.y /= 1.75;
         titleText.updateHitbox();
         add(titleText);
 
         contentY = headerHeight + 4;
+        elementColor = 0xFF3d3f41;
         isOpen = open;
     }
 
