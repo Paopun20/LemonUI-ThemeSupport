@@ -40,7 +40,6 @@ class MenuBar extends ElementBase {
 
 	override function onColorChange(value:FlxColor) {
 		super.onColorChange(value);
-		trace('yo?');
 		/* background.color = ThemeManager.backgroundColor;
 		for (i in menuItems) {
 			i.elementColor = ThemeManager.backgroundColor;
@@ -51,7 +50,6 @@ class MenuBar extends ElementBase {
 		super.update(elapsed);
 		if (!FlxG.mouse.overlaps(this) && FlxG.mouse.justPressed) closeAll();
 
-		trace(background);
 		if (background != null) background.color = ThemeManager.activeColor;
 
 		if (anyOpened) {
