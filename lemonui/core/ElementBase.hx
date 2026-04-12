@@ -62,10 +62,7 @@ class ElementBase extends FlxSpriteGroup {
 		if (Std.isOfType(obj, ElementBase)) {
 			var el:ElementBase = cast obj;
 			el.elementColor = ThemeManager.backgroundColor;
-		}
-		if (Std.isOfType(obj, FlxSpriteGroup)) {
-			var group:FlxSpriteGroup = cast obj;
-			for (member in group.members) {
+			for (member in el.members) {
 				if (member != null) applyThemeRecursive(member);
 			}
 		}

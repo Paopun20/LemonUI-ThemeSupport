@@ -7,6 +7,7 @@ import flixel.util.FlxColor;
 
 import lemonui.core.ElementBase;
 import lemonui.utils.SpriteUtil;
+import lemonui.themes.Theme;
 
 import lemonui.themes.ThemeManager;
 
@@ -104,10 +105,10 @@ class TabPanel extends ElementBase {
 		for (i in 0...tabs.length) {
 			var tab = tabs[i];
 			if (i == selectedTab) {
-				tab.bg.color = FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.1);
+				tab.bg.color = FlxColor.interpolate(ThemeManager.backgroundColor, FlxColor.BLACK, 0.1);
 				tab.label.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.85);
 			} else {
-				tab.bg.color = FlxColor.interpolate(elementColor, FlxColor.BLACK, 0.25);
+				tab.bg.color = FlxColor.interpolate(ThemeManager.backgroundColor, FlxColor.BLACK, 0.25);
 				tab.label.color = FlxColor.interpolate(elementColor, FlxColor.WHITE, 0.5);
 			}
 		}
@@ -137,8 +138,8 @@ class TabPanel extends ElementBase {
 
 	override function onColorChange(value:FlxColor) {
 		super.onColorChange(value);
-		if (background != null) background.color = value;
-		if (tabBar != null) tabBar.color = FlxColor.interpolate(value, FlxColor.BLACK, 0.3);
+		if (background != null) background.color = ThemeManager.backgroundColor;
+		if (tabBar != null) tabBar.color = FlxColor.interpolate(ThemeManager.backgroundColor, FlxColor.BLACK, 0.3);
 		applyTabColors();
 	}
 

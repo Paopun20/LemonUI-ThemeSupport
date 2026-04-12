@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import lemonui.core.ElementBase;
+import lemonui.themes.ThemeManager;
 
 class MenuBar extends ElementBase {
 
@@ -39,12 +40,19 @@ class MenuBar extends ElementBase {
 
 	override function onColorChange(value:FlxColor) {
 		super.onColorChange(value);
-		if (background != null) background.color = value;
+		trace('yo?');
+		/* background.color = ThemeManager.backgroundColor;
+		for (i in menuItems) {
+			i.elementColor = ThemeManager.backgroundColor;
+		} */
 	}
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 		if (!FlxG.mouse.overlaps(this) && FlxG.mouse.justPressed) closeAll();
+
+		trace(background);
+		if (background != null) background.color = ThemeManager.activeColor;
 
 		if (anyOpened) {
 			for (i in menuItems) {

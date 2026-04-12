@@ -48,9 +48,9 @@ class Button extends ElementBase {
 
 	override function onColorChange(value:FlxColor) {
 		super.onColorChange(value);
-		if (background != null) background.color = value;
-		if (hoverSprite != null) hoverSprite.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.25);
-		if (buttonText != null) buttonText.color = FlxColor.interpolate(value, FlxColor.WHITE, 0.85);
+		if (background != null) background.color = ThemeManager.backgroundColor;
+		if (hoverSprite != null) hoverSprite.color = FlxColor.interpolate(ThemeManager.backgroundColor, FlxColor.WHITE, 0.25);
+		if (buttonText != null) buttonText.color = FlxColor.interpolate(ThemeManager.backgroundColor, FlxColor.WHITE, 0.85);
 	}
 
 	public var tooltipText:String = '';
